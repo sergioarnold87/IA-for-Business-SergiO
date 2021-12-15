@@ -75,5 +75,20 @@ class Environment(object):
         if(self.current_rate_data < self.min_rate_data):
             self.current_rate_data = self.min_rate_data
         elif(self.current_rate_data > self.max_rate_data):
-            self.current_rate_data = self.max_rate_data      
+            self.current_rate_data = self.max_rate_data  
+        # Calcular la variacion de temperatura intrínseca
+        past_intrinsic_temperature = self.intrinsec_temperature
+        self.intrinsec_temperature = self.atmospheric_temperature + 1.25*self.current_number_users+1.25*self.current_rate_data
+        delta_intrinsec_temperature = self.intrinsec_temperature - past_intrinsic_temperature
+        # Calcular la variacion de temperatura causada por la IA
+        if(direction == -1):
+            delta_temperature_ai = -energy_ai
+        elif(direction == 1):
+            delta_temperature_ai = energy_ai
+        # Calcular la nueva temperatura del server cuando hay IA conectada
+        self.temperature_ai += delta_intrinsec_temperature + delta_temperature_ai
+        # Calcular la nueva temperatura del server cuando no hay IA conectada
+        
+        
+        
         
