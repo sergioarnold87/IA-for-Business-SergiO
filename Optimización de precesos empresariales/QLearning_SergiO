@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Dec 13 18:16:14 2021
+
+@author: sergio
+"""
+# PArte 1 - Optimziar flujo de trabajo en un almacen con QLearning
+
+# Importar Librerias
+import numpy as np
+
+# Configurar los parametros gamma y alpha para el algoritmo de QLearning
+
+gamma = 0.75
+alpha = 0.9
+
+# Definir el entorno
+
+## Definición de los estados
+location_to_state = {'A': 0,
+                     'B': 1,
+                     'C': 2,
+                     'D': 3,
+                     'E': 4,
+                     'F': 5,
+                     'G': 6, 
+                     'H': 7, 
+                     'I': 8,
+                     'J': 9,
+                     'K': 10,
+                     'L': 11}
+
+# Definicion de las acciones
+actions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+# Definicion de las recompensas
+# Columnas:    A,B,C,D,E,F,G,H,I,J,K,L
+R = np.array([[0,1,0,0,0,0,0,0,0,0,0,0], # A
+              [1,0,1,0,0,1,0,0,0,0,0,0], # B
+              [0,1,0,0,0,0,1,0,0,0,0,0], # C
+              [0,0,0,0,0,0,0,1,0,0,0,0], # D
+              [0,0,0,0,0,0,0,0,1,0,0,0], # E
+              [0,1,0,0,0,0,0,0,0,1,0,0], # F
+              [0,0,1,0,0,0,1,1,0,0,0,0], # G
+              [0,0,0,1,0,0,1,0,0,0,0,1], # H
+              [0,0,0,0,1,0,0,0,0,1,0,0], # I
+              [0,0,0,0,0,1,0,0,1,0,1,0], # J
+              [0,0,0,0,0,0,0,0,0,1,0,1], # K
+              [0,0,0,0,0,0,0,1,0,0,1,0]])# L
+
+# PARTE 2 - CONSTRUCCIoN DE LA SOLUCIoN DE IA CON Q-LEARNING
+
+# Transformación inversa de estados a ubicaciones
+state_to_location = {state : location for location, state in location_to_state.items()}
+
+
+# Crear una funciona final que nos devuelva la ruta optima
+
+def route(starting_location, ending_location):
+    R_new = np.copy(R)
+    
+
