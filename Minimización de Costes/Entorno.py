@@ -88,6 +88,7 @@ class Environment(object):
         # Calcular la nueva temperatura del server cuando hay IA conectada
         self.temperature_ai += delta_intrinsec_temperature + delta_temperature_ai
         # Calcular la nueva temperatura del server cuando no hay IA conectada
+        self.temperature_noai += delta_intrinsec_temperature
         
         
         
