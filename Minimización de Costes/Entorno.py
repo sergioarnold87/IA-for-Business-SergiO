@@ -90,6 +90,10 @@ class Environment(object):
         # Calcular la nueva temperatura del server cuando no hay IA conectada
         self.temperature_noai += delta_intrinsec_temperature
         
+        # OBTENCION DEL GAME OVER
+        if(self.temperature_ai < self.min_temperature):
+            if ()
+        
         
         
         
