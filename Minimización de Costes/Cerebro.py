@@ -7,8 +7,7 @@ Created on Tue Dec 28 08:57:13 2021
 """
 
 # Importar las librerías
-import tensorflow as tf
-
+from tensorflow import keras
 from keras.layers import Input, Dense
 from keras.models import Model
 from keras.optimizers import Adam
